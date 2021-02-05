@@ -79,16 +79,15 @@ Open your favourite browser and hit the URL:
     server 172.20.0.2:9090; 
      }
   * In default config file for nginx, location for Proto service will be in below format
-    ### /package.servicename/functionName.
+    - /package.servicename/functionName.
 	 
   * use the same grpc service address (172.20.0.2:9090) in PersonService.java in spring-boot service to call grpc-service.
   * In docker-compose.yaml file port mapping of service to nginx is done below
     ### service port: default nginx port
     - 8080:80
   * In docker-compose.yaml file, expose the service at port 8080
-  * under vo
   * In docker-compose.yaml file, volume destination should be exactly the same as its the path where nginx stores its config
     ### source config path in project: destination nginx config
-    ./nginx/conf.d:/etc/nginx/conf.d
+    - ./nginx/conf.d:/etc/nginx/conf.d
 	 
 
