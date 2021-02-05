@@ -7,13 +7,16 @@ services:
     ports:
     - 8080:80
     volumes:
+    # source conf in your project:destination conf path in nginx(should not be modified)
     - ./nginx/conf.d:/etc/nginx/conf.d
     depends_on:
     - app
   
   app:
     restart: always
+    # builds under the parent path of project
     build: .
+    # expose backend service on 8080 port
     expose:
       - "8080"
     command: mvn clean spring-boot:run

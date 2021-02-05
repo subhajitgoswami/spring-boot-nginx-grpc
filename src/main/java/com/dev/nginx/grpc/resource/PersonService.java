@@ -21,6 +21,8 @@ public class PersonService {
 	@PostConstruct
 	private void init() {
 		log.info("Init Managed Channel");
+		/* ip: 172.20.0.2 is the ip of back service running container in docker
+		 * grpc is running on 9090 and springboot is running on 8080 on the same container */
 		ManagedChannel channel = ManagedChannelBuilder.forAddress("172.20.0.2", 9090).usePlaintext().build();
 
 		personProtoServiceBlockingStub = PersonProtoServiceGrpc.newBlockingStub(channel);
