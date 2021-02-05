@@ -1,0 +1,19 @@
+version: '3'
+services:
+  hk-nginx:
+    container_name: hk-nginx
+    image: nginx:1.13
+    restart: always
+    ports:
+    - 8080:80
+    volumes:
+    - ./nginx/conf.d:/etc/nginx/conf.d
+    depends_on:
+    - app
+  
+  app:
+    restart: always
+    build: .
+    expose:
+      - "8080"
+    command: mvn clean spring-boot:run
